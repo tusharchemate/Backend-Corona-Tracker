@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+  <head>
+    <title>Corona Virus Tracker App </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+   	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  	
+  	<!-- cdn link data Table requires this two cdn only --> 
+	
+	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.21/b-1.6.2/r-2.2.5/sc-2.0.2/sp-1.1.1/datatables.min.css"/>
+	<script type="text/javascript" src="https://cdn.datatables.net/v/bs4-4.1.1/jq-3.3.1/dt-1.10.21/b-1.6.2/r-2.2.5/sc-2.0.2/sp-1.1.1/datatables.min.js"></script>
+	
+	<!-- External custom js file  -->
+	
+	<script th:src="@{js/custom.js}"></script>
+	<link rel="stylesheet" type="text/css" href="css/style.css"></link>
+
+  </head>
+
+  <body>
+  <div class="container-fluid mt-3">
+  <div class="card float-right m-1">
+  	<h6 class="card-title text-center text-success small mb-1">Developed By</h6>
+    <h5 class="card-text text-primary small mb-1">Tushar D.Chemate </h5>
+  </div>
+    <div class="jumbotron text-center mb-4">
+    	<h2 class="lead text-info">COVID 19</h2>
+  		<h1 class="display-4 text-primary font-weight-bold" th:text="${cases}">"hello" </h1>
+  		<h2 class=" text-danger">Total Cases Reported Today </h2>
+ 	 </div>
+ 	
+  
+     <table id="myTable" class="mt-2 table  table-bordered table-dark text-center">
+      <thead>
+      <tr>
+        <th>Country</th>
+        <th>State</th>
+        <th>Number Of Cases</th>
+        <th>Changes since last day</th>
+        <th>Lat</th>
+        <th>Long</th>
+      </tr> 
+      </thead>
+       
+      <tr th:each="loc : ${locationStats}">
+      
+        <td th:text="${loc.country}"></td>
+        <td th:text="${loc.state}"></td>
+        <td th:text="${loc.totalcases}"></td>
+        <td th:text="${loc.diffprev}"></td>
+        <td th:text="${loc.lat}"></td>
+         <td th:text="${loc.longitute}"></td>
+      </tr>
+       
+    </table>
+    </div>
+   </body>
+
+</html>
